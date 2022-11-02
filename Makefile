@@ -2,10 +2,15 @@
 # Makefile for hello world program.
 #
 
-NAME = hello
+BINLIST = hello goodbye
 
-$(NAME) : $(NAME).c
-	$(CC) $< -o $@
+CFLAGS = -O
+
+all: $(BINLIST)
+
+$(BINLIST): %: %.c
+	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
-	$(RM) $(NAME)
+	$(RM) $(BINLIST)
+
